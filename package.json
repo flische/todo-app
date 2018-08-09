@@ -1,14 +1,14 @@
 {
-  "name": "react_starter",
+  "name": "todo_app",
   "version": "1.0.0",
-  "description": "Starting setup for react redux project",
+  "description": "Todo app built with ReactJS",
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Scott Bowler",
+  "author": "Federico Lische",
   "license": "ISC",
   "repository": {
     "type": "git",
