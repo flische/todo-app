@@ -3,6 +3,10 @@ import React, {Component} from 'react';
 import AddItem from './add_item';
 import TodoList from './todo_list';
 import listData from '../data/todo';
+import axios from 'axios';
+
+const BASE_URL = 'http://api.reactprototypes.com';
+const API_KEY = '?key=c618_demofed';
 
 class App extends Component{
     constructor(props){
@@ -17,23 +21,45 @@ class App extends Component{
         this.getListData();
     }
 
-    addItem(item){
+    async addItem(item){
         // we are expecting an item / object with "title" and "details"
         // we need to use an object because we use the properties
-        item._id = new Date().getTime(); // set the _id of each item to a time stamp!
+        try {
+            await axios.post(`${BASE_URL}/todos${API_KEY}`, item);
 
-        this.setState({
-            items: [item, ...this.state.items]
-        });
+            this.getListData();
+        }
+        catch(error){
+            console.log('Something went wrong: ', error)
+        }
+
+        // item._id = new Date().getTime(); // set the _id of each item to a time stamp!
+        //
+        // this.setState({
+        //     items: [item, ...this.state.items]
+        // });
     }
 
-    getListData(){
+    async getListData(){
         // this is where you would call the server for your data //
+        const response = await axios.get(`${BASE_URL}/todos${API_KEY}`);
 
         this.setState({
-            items: listData
+            items: response.data.todos
         });
     }
+
+    // Above function using axios with async and await is the same as below//
+
+    // getListData(){
+    //     axios.get(`${BASE_URL}/todos${API_KEY}`).then( (response) => {
+    //             this.setState({
+    //                 items: response.data.todos
+    //             });
+    //     }).catch((error) => {
+    //         console.log('There was an error!:', error.message);
+    //     });
+    // }
 
     render(){
 
