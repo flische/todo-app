@@ -16,19 +16,16 @@ class AddItem extends Component{
         });
     };
 
-    handleAddItem = (e) => {
-        e.preventDefault();
+    handleAddItem = (event) => {
+        event.preventDefault();
 
         this.props.add(this.state);
-    // Above: this.state is our item (state is the object holding the information we need)
 
         this.setState({
             title: '',
             details:''
         })
-    // Above: this.setState is called to empty title and details input fields
     };
-
 
     render(){
         const {title, details} = this.state;
