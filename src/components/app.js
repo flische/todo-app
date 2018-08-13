@@ -31,6 +31,20 @@ class App extends Component{
         }
     };
 
+    async deleteItem(id){
+        const { BASE_URL, API_KEY} = config.api;
+
+        try {
+            const response = await axios.delete(`${BASE_URL}/todos/${id + API_KEY}`);
+            console.log("Delete Response: ", response);
+        }
+        catch(error){
+            console.log('Error: ', error.message);
+        }
+
+        this.getListData();
+    }
+
     async getListData(){
         const { BASE_URL, API_KEY} = config.api;
 
@@ -46,23 +60,24 @@ class App extends Component{
         }
     }
 
-    // async deleteItem(id){
-    //     const response = await axios.delete(`${BASE_URL}/todos/${id + API_KEY}`);
-    //     console.log("Response: ", response);
-    //     this.getListData();
-    // }
-
     render(){
         return (
             <div className="container">
-                    <Switch>
-                        <Route
-                            exact path="/"
-                            render={props => <Home getList={this.getListData.bind(this)} add={this.addItem.bind(this)} list={this.state.items} {...props}/>}
-                        />
-                        <Route path="/item-details/:item_id" component={ItemDetails}/>
-                        <Route component={NotFound}/>
-                    </Switch>
+                <Switch>
+                    <Route
+                        exact path="/"
+                        render={props => {
+                            return <Home getList={this.getListData.bind(this)} add={this.addItem.bind(this)} list={this.state.items} {...props}/>
+                        }}
+                    />
+                    <Route
+                        path="/item-details/:item_id"
+                        render={ routeProps => {
+                            return <ItemDetails delete={this.deleteItem.bind(this)} {...routeProps}/>
+                        }}
+                    />
+                    <Route component={NotFound}/>
+                </Switch>
             </div>
         )
     }
