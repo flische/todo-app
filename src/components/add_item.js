@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 
 class AddItem extends Component{
-    state= {
-      title: '',
-      details: ''
-    };
+    constructor(props){
+        super(props);
+
+        this.state = {
+            title: '',
+            details: ''
+        };
+    }
 
     handleInputChange = (e) =>{
         const {name, value} = e.target;
