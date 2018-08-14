@@ -21,7 +21,27 @@ class ItemDetails extends Component{
 
         this.setState({
             itemDetails: response.data.todo
-        })
+        });
+    }
+
+    async handleToggleComplete(){
+
+        const todoItem = await this.props.toggleComplete(this.state.itemDetails._id);
+
+        console.log("item details Toggle Complete todo item: ", todoItem);
+
+        this.setState({
+            itemDetails: todoItem
+        });
+
+    }
+
+    async handleDelete(){
+        console.log('Delete item: ', this.state.itemDetails._id);
+
+        await this.props.delete(this.state.itemDetails._id);
+
+        this.props.history.push('/');
     }
 
     render(){
@@ -36,14 +56,31 @@ class ItemDetails extends Component{
         return (
             <div>
                 <h1 className="center">Item Details</h1>
+                <h4><b>Title:</b> {itemDetails.title}</h4><br/>
+                <h5><b>Details:</b> {itemDetails.details}</h5><br/>
+
                 <div className="row">
-                    <div className="col s12 right-align">
+                    <div className="col s4 left-align">
+                        <button
+                            onClick={this.handleToggleComplete.bind(this)}
+                            className="btn blue darken-3">Complete
+                        </button>
+                    </div>
+                    <div className="col s3 center">
+                        <button
+                            onClick={this.handleDelete.bind(this)}
+                            className="btn red darken-2">Delete
+                        </button>
+                    </div>
+                    <div className="col s5 center">
                         <Link to="/" className="btn purple darken-2">Back to List</Link>
                     </div>
                 </div>
-                <h4><b>Title:</b> {itemDetails.title}</h4>
+                <h5 className="left-align">
+                    {itemDetails.complete ? 'Item Complete' : 'Item is not yet complete'}
+                </h5>
             </div>
-        );
+            );
     }
 }
 
