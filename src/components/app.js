@@ -1,3 +1,4 @@
+import '../../src/assets/css/app.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
@@ -22,7 +23,7 @@ class App extends Component{
         const { BASE_URL, API_KEY} = config.api;
 
         try {
-            await axios.post(`${BASE_URL}/todos${API_KEY}`, item);
+            await axios.post(`${BASE_URL}/todos/${API_KEY}`, item);
 
             this.getListData();
         }
@@ -64,11 +65,13 @@ class App extends Component{
         const { BASE_URL, API_KEY} = config.api;
 
         try {
-            const response = await axios.get(`${BASE_URL}/todos${API_KEY}`);
+            const response = await axios.get(`${BASE_URL}/todos/${API_KEY}`);
 
             this.setState({
                 items: response.data.todos
-            })
+            });
+
+            console.log("todos from App component", response.data);
         }
         catch(error){
             console.log('Error: ', error.message);
@@ -85,6 +88,7 @@ class App extends Component{
                             return <Home
                                 getList={this.getListData.bind(this)}
                                 add={this.addItem.bind(this)}
+                                toggleComplete={this.toggleItemComplete.bind(this)}
                                 list={this.state.items} {...props}/>
                         }}
                     />
