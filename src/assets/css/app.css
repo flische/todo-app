@@ -1,43 +1,47 @@
-@font-face {
-    font-family: quest;
-    src: url(../fonts/quest.ttf);
+* {
+    background-color: lightsteelblue;
 }
 
-body {
-    margin: 0;
-}
+/*@font-face {*/
+    /*font-family: quest;*/
+    /*src: url(../fonts/quest.ttf);*/
+/*}*/
 
-.app {
-    background-color: #000;
-    color: #FFF;
-    font-family: quest;
-    font-size: 30px;
-    padding: 50px;
-    text-align: center;
-}
+/*body {*/
+    /*margin: 0;*/
+/*}*/
 
-.app .logo {
-    height: 220px;
-    filter: drop-shadow(2px 2px 0px #FFF);
-}
+/*.app {*/
+    /*background-color: #000;*/
+    /*color: #FFF;*/
+    /*font-family: quest;*/
+    /*font-size: 30px;*/
+    /*padding: 50px;*/
+    /*text-align: center;*/
+/*}*/
 
-.app h1 {
-    color: #61DAFB;
-    font-size: 5em;
-    letter-spacing: 5px;
-    margin: 0.16em;
-    text-shadow: 2px 2px 0 #FFF;
-}
+/*.app .logo {*/
+    /*height: 220px;*/
+    /*filter: drop-shadow(2px 2px 0px #FFF);*/
+/*}*/
 
-.rotate {
-    animation: spin 10s linear infinite;
-}
+/*.app h1 {*/
+    /*color: #61DAFB;*/
+    /*font-size: 5em;*/
+    /*letter-spacing: 5px;*/
+    /*margin: 0.16em;*/
+    /*text-shadow: 2px 2px 0 #FFF;*/
+/*}*/
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
+/*.rotate {*/
+    /*animation: spin 10s linear infinite;*/
+/*}*/
+
+/*@keyframes spin {*/
+    /*from {*/
+        /*transform: rotate(0deg);*/
+    /*}*/
+    /*to {*/
+        /*transform: rotate(360deg);*/
+    /*}*/
+/*}*/

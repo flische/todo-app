@@ -54,31 +54,47 @@ class ItemDetails extends Component{
         }
 
         return (
-            <div>
-                <h1 className="center">Item Details</h1>
-                <h4><b>Title:</b> {itemDetails.title}</h4><br/>
-                <h5><b>Details:</b> {itemDetails.details}</h5><br/>
-
+            <div className="">
+                <h1 className="center indigo-text darken-3">Item Details</h1><br/>
+                <div className="row card-panel indigo lighten-5">
+                    <h4 className="center indigo lighten-5"><b className="indigo lighten-5 indigo-text">Title:</b> {itemDetails.title}</h4><br/>
+                    <h5 className="indigo lighten-5"><b className="indigo lighten-5 indigo-text">Details:</b> {itemDetails.details}</h5><br/>
+                </div>
                 <div className="row">
-                    <div className="col s4 left-align">
-                        <button
-                            onClick={this.handleToggleComplete.bind(this)}
-                            className="btn blue darken-3">Complete
-                        </button>
+                    <div className="col s4 center">
+                        {itemDetails.complete ?
+                            <button
+                                className="btn orange darken-2"
+                                onClick={this.handleToggleComplete.bind(this)}
+                                >Mark as Incomplete
+                            </button>
+                            :
+                            <button
+                                className="btn blue darken-3"
+                                onClick={this.handleToggleComplete.bind(this)}
+                                >Complete Task
+                            </button>
+                        }
                     </div>
-                    <div className="col s3 center">
+                    <div className="col s4 center">
                         <button
                             onClick={this.handleDelete.bind(this)}
-                            className="btn red darken-2">Delete
+                            className="btn red darken-2">Delete Task
                         </button>
                     </div>
-                    <div className="col s5 center">
+                    <div className="col s4 center">
                         <Link to="/" className="btn purple darken-2">Back to List</Link>
                     </div>
                 </div>
-                <h5 className="left-align">
-                    {itemDetails.complete ? 'Item Complete' : 'Item is not yet complete'}
-                </h5>
+                {itemDetails.complete ?
+                    <h5 className="row card-panel green lighten-4"><b className="green lighten-4 indigo-text">Status: </b>
+                        <span className="green lighten-4 indigo-text">Item Complete!</span>
+                    </h5>
+                    :
+                    <h5 className="row card-panel amber lighten-4"><b className="amber lighten-4 red-text">Status: </b>
+                        <span className="amber lighten-4 red-text">Item is not yet complete</span>
+                    </h5>
+                }
             </div>
             );
     }

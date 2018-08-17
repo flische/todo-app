@@ -7,12 +7,13 @@ class Home extends Component{
         this.props.getList();
     }
     render(){
-        const {add, list} = this.props;
+        const {add, list, toggleComplete} = this.props;
+        console.log('home props: ', this.props);
         return (
             <div>
-                <h1 className="center">To Do List</h1>
-                <AddItem add={add}/>
-                <TodoList list={list}/>
+                <h1 className="center teal-text darken-4">To Do List</h1>
+                <AddItem add={add}/><br/>
+                <TodoList toggleComplete={toggleComplete} list={list}/>
             </div>
         )
     }

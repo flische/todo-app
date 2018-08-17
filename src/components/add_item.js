@@ -36,27 +36,29 @@ class AddItem extends Component{
 
         return(
             <form onSubmit={this.handleAddItem}>
-                <div className="row">
-                    <div className="col s6">
-                        <label>Title</label>
+                <div className="row grey lighten-5">
+                    <div className="col s6 grey lighten-5">
+                        <label className="grey lighten-5">TITLE</label>
                         <input type="text"
                                name="title"
+                               placeholder="<type the todo task title here>"
                                onChange={this.handleInputChange}
                                value={title}
                         />
                     </div>
-                    <div className="col s6">
-                        <label>Details</label>
+                    <div className="col s6 grey lighten-5">
+                        <label className="grey lighten-5">DETAILS</label>
                         <input type="text"
                                name="details"
+                               placeholder="<type the todo task details here>"
                                onChange={this.handleInputChange}
                                value={details}
                         />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col s12 right-align">
-                        <button className="btn purple darken-3">Add Item</button>
+                    <div className="col s12 center">
+                        <button className="btn pulse purple darken-3">Add Task</button>
                     </div>
                 </div>
             </form>
